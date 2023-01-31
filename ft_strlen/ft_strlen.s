@@ -1,3 +1,5 @@
+BITS 64
+
 global ft_strlen
 
 ft_strlen:
