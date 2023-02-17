@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc main.c libasm.a
+gcc -Wall -Wextra -Werror main.c libasm.a
