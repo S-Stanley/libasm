@@ -4,6 +4,7 @@
 
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, char *src);
+int 		ft_strcmp(char *s1, char *s2);
 
 void	test_strlen(char *mode)
 {
@@ -48,6 +49,30 @@ void	test_strcpy(char *mode)
 	}
 }
 
+void	test_strcmp(char *mode)
+{
+	printf("** TEST STRCMP **\n");
+
+	if (strcmp(mode, "real") == 0)
+	{
+		printf("%d\n", strcmp("Hello world", "Hello world"));
+		printf("%d\n", strcmp("Hello world", "Hello"));
+		printf("%d\n", strcmp("Hello", "Hello world"));
+		printf("%d\n", strcmp("", ""));
+		printf("%d\n", ft_strcmp("Hello world", "Hello 1world"));
+		printf("%d\n", ft_strcmp("Hello 1world", "Hello world"));
+	}
+	else
+	{
+		printf("%d\n", ft_strcmp("Hello world", "Hello world"));
+		printf("%d\n", ft_strcmp("Hello world", "Hello"));
+		printf("%d\n", ft_strcmp("Hello", "Hello world"));
+		printf("%d\n", ft_strcmp("", ""));
+		printf("%d\n", ft_strcmp("Hello world", "Hello 1world"));
+		printf("%d\n", ft_strcmp("Hello 1world", "Hello world"));
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac != 2)
@@ -65,6 +90,7 @@ int main(int ac, char **av)
 
 	test_strlen(av[1]);
 	test_strcpy(av[1]);
+	test_strcmp(av[1]);
 
 	return (0);
 }
