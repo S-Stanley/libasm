@@ -1,3 +1,0 @@
-- [ ] Check null argument
-- [ ] Add more tests
-- [ ] Check with const

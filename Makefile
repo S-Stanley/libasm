@@ -1,4 +1,4 @@
-SRCS = srcs/ft_strlen.asm
+SRCS = srcs/ft_strlen.asm srcs/ft_strcpy.asm
 BONUS =
 OBJS = $(SRCS:.asm=.o)
 OBJSBONUS = $(BONUS:.asm=.o)
