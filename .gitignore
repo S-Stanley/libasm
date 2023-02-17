@@ -2,3 +2,4 @@
 a.out
 libasm.a
 .vscode/
+log-*
