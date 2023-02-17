@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-int ft_strlen(char *str);
-char *ft_strcpy(char *dest, char *src);
+int		ft_strlen(char *str);
+char	*ft_strcpy(char *dest, char *src);
 
 void	test_strlen(char *mode)
 {
@@ -56,13 +56,13 @@ int main(int ac, char **av)
 		printf("Mode could be \"real\" or \"libasm\"");
 		return (1);
 	}
-	
+
 	if (strcmp(av[1], "real") != 0 && strcmp(av[1], "libasm") != 0)
 	{
 		printf("Unknow mode\n");
 		return (1);
 	}
-	
+
 	test_strlen(av[1]);
 	test_strcpy(av[1]);
 
