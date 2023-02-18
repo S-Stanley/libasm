@@ -14,8 +14,8 @@ L0:
     cmp byte bl, 0              ; check if s2 is finish (null terminating char)
     je L2                       ; if finished, jump to L2
     cmp byte bl, bh 		    ; check if s1[x] and s2[x] are differents
-    jg L4                       ; if diff greater return 1
-    jl L5                       ; if diff lower return -1
+    jg L5                       ; if diff greater return 1
+    jl L4                       ; if diff lower return -1
     inc rax                     ; increment iterator
     jmp L0                      ; continue loop
 
