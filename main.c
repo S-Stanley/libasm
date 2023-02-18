@@ -6,8 +6,9 @@
 
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, char *src);
-int 		ft_strcmp(char *s1, char *s2);
+int 	ft_strcmp(char *s1, char *s2);
 int		ft_write(int fd, char *buff, int size);
+int		ft_read(int fd, char *buff, int size);
 
 void	test_strlen(char *mode)
 {
@@ -79,7 +80,7 @@ void	test_strcmp(char *mode)
 void	test_write(char *mode)
 {
 	printf("\n** TEST WRITE **\n");
-	
+
 	int fd_real = open("tests/test-write-real", O_RDWR | O_CREAT);
 	int fd_libasm = open("tests/test-write-libasm", O_RDWR | O_CREAT);
 
@@ -92,6 +93,37 @@ void	test_write(char *mode)
 	{
 		printf("\n%d\n", ft_write(1, "Hello world", strlen("Hello world")));
 		ft_write(fd_libasm, "test\nsalut", 10);
+	}
+}
+
+void	test_read(char *mode)
+{
+	printf("\n** TEST READ **\n");
+
+	int fd = open("docs/ressources.md", O_RDONLY | O_CREAT);
+	int fake_fd = open("unexistingfile", O_RDONLY);
+	int rd;
+	char buff[50];
+
+	if (strcmp(mode, "real") == 0)
+	{
+		bzero(buff, 50);
+		rd = read(fd, buff, 50);
+		printf("%s\n", buff);
+
+		bzero(buff, 50);
+		rd = read(fake_fd, buff, 50);
+		printf("%d\n", rd);
+	}
+	else
+	{
+		bzero(buff, 50);
+		rd = ft_read(fd, buff, 50);
+		printf("%s\n", buff);
+
+		bzero(buff, 50);
+		rd = read(fake_fd, buff, 50);
+		printf("%d\n", rd);
 	}
 }
 
@@ -114,6 +146,7 @@ int main(int ac, char **av)
 	test_strcpy(av[1]);
 	test_strcmp(av[1]);
 	test_write(av[1]);
+	test_read(av[1]);
 
 	return (0);
 }
