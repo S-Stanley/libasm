@@ -2,8 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-int ft_strlen(char *str);
-char *ft_strcpy(char *dest, char *src);
+int		ft_strlen(char *str);
+char	*ft_strcpy(char *dest, char *src);
+int 		ft_strcmp(char *s1, char *s2);
 
 void	test_strlen(char *mode)
 {
@@ -48,6 +49,30 @@ void	test_strcpy(char *mode)
 	}
 }
 
+void	test_strcmp(char *mode)
+{
+	printf("** TEST STRCMP **\n");
+
+	if (strcmp(mode, "real") == 0)
+	{
+		printf("%d\n", strcmp("Hello world", "Hello world"));
+		printf("%d\n", strcmp("Hello world", "Hello"));
+		printf("%d\n", strcmp("Hello", "Hello world"));
+		printf("%d\n", strcmp("", ""));
+		printf("%d\n", ft_strcmp("Hello world", "Hello 1world"));
+		printf("%d\n", ft_strcmp("Hello 1world", "Hello world"));
+	}
+	else
+	{
+		printf("%d\n", ft_strcmp("Hello world", "Hello world"));
+		printf("%d\n", ft_strcmp("Hello world", "Hello"));
+		printf("%d\n", ft_strcmp("Hello", "Hello world"));
+		printf("%d\n", ft_strcmp("", ""));
+		printf("%d\n", ft_strcmp("Hello world", "Hello 1world"));
+		printf("%d\n", ft_strcmp("Hello 1world", "Hello world"));
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac != 2)
@@ -56,15 +81,16 @@ int main(int ac, char **av)
 		printf("Mode could be \"real\" or \"libasm\"");
 		return (1);
 	}
-	
+
 	if (strcmp(av[1], "real") != 0 && strcmp(av[1], "libasm") != 0)
 	{
 		printf("Unknow mode\n");
 		return (1);
 	}
-	
+
 	test_strlen(av[1]);
 	test_strcpy(av[1]);
+	test_strcmp(av[1]);
 
 	return (0);
 }
