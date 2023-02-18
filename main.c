@@ -59,8 +59,8 @@ void	test_strcmp(char *mode)
 		printf("%d\n", strcmp("Hello world", "Hello"));
 		printf("%d\n", strcmp("Hello", "Hello world"));
 		printf("%d\n", strcmp("", ""));
-		printf("%d\n", ft_strcmp("Hello world", "Hello 1world"));
-		printf("%d\n", ft_strcmp("Hello 1world", "Hello world"));
+		printf("%d\n", strcmp("Hello world", "Hello 1world"));
+		printf("%d\n", strcmp("Hello 1world", "Hello world"));
 	}
 	else
 	{
