@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, char *src);
 int 		ft_strcmp(char *s1, char *s2);
+int		ft_write(int fd, char *buff, int size);
 
 void	test_strlen(char *mode)
 {
@@ -51,7 +54,7 @@ void	test_strcpy(char *mode)
 
 void	test_strcmp(char *mode)
 {
-	printf("** TEST STRCMP **\n");
+	printf("\n** TEST STRCMP **\n");
 
 	if (strcmp(mode, "real") == 0)
 	{
@@ -73,6 +76,25 @@ void	test_strcmp(char *mode)
 	}
 }
 
+void	test_write(char *mode)
+{
+	printf("\n** TEST WRITE **\n");
+	
+	int fd_real = open("tests/test-write-real", O_RDWR | O_CREAT);
+	int fd_libasm = open("tests/test-write-libasm", O_RDWR | O_CREAT);
+
+	if (strcmp(mode, "real") == 0)
+	{
+		printf("\n%ld\n", write(1, "Hello world", strlen("Hello world")));
+		write(fd_real, "test\nsalut", 10);
+	}
+	else
+	{
+		printf("\n%d\n", ft_write(1, "Hello world", strlen("Hello world")));
+		write(fd_libasm, "test\nsalut", 10);
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac != 2)
@@ -91,6 +113,7 @@ int main(int ac, char **av)
 	test_strlen(av[1]);
 	test_strcpy(av[1]);
 	test_strcmp(av[1]);
+	test_write(av[1]);
 
 	return (0);
 }
