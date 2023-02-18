@@ -91,7 +91,7 @@ void	test_write(char *mode)
 	else
 	{
 		printf("\n%d\n", ft_write(1, "Hello world", strlen("Hello world")));
-		write(fd_libasm, "test\nsalut", 10);
+		ft_write(fd_libasm, "test\nsalut", 10);
 	}
 }
 
