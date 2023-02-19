@@ -9,6 +9,7 @@ char	*ft_strcpy(char *dest, char *src);
 int 	ft_strcmp(char *s1, char *s2);
 int		ft_write(int fd, char *buff, int size);
 int		ft_read(int fd, char *buff, int size);
+char 	*ft_strdup(char *str);
 
 void	test_strlen(char *mode)
 {
@@ -119,11 +120,33 @@ void	test_read(char *mode)
 	{
 		bzero(buff, 50);
 		rd = ft_read(fd, buff, 50);
+		buff[rd] = 0;
 		printf("%s\n", buff);
 
 		bzero(buff, 50);
 		rd = read(fake_fd, buff, 50);
 		printf("%d\n", rd);
+	}
+}
+
+void	test_strdup(char *mode)
+{
+	printf("\n** TEST STRDUP **\n");
+
+	char *s1;
+	char *s2;
+
+	if (strcmp(mode, "real") == 0)
+	{
+		s1 = strdup("hello world");
+		printf("str=%s\n", s1);
+		free(s1);
+	}
+	else
+	{
+		s2 = ft_strdup("hello world");
+		printf("str=%s\n", s2);
+		free(s2);
 	}
 }
 
@@ -147,6 +170,7 @@ int main(int ac, char **av)
 	test_strcmp(av[1]);
 	test_write(av[1]);
 	test_read(av[1]);
+	test_strdup(av[1]);
 
 	return (0);
 }
