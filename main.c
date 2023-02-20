@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
 int		ft_strlen(char *str);
 char	*ft_strcpy(char *dest, char *src);
@@ -115,6 +116,7 @@ void	test_read(char *mode)
 		bzero(buff, 50);
 		rd = read(fake_fd, buff, 50);
 		printf("%d\n", rd);
+		printf("errno=%d\n", errno);
 	}
 	else
 	{
@@ -126,6 +128,7 @@ void	test_read(char *mode)
 		bzero(buff, 50);
 		rd = read(fake_fd, buff, 50);
 		printf("%d\n", rd);
+		printf("errno=%d\n", errno);
 	}
 }
 
