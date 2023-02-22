@@ -4,3 +4,4 @@ libasm.a
 .vscode/
 log-*
 tests/
+a.out*
