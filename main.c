@@ -126,7 +126,7 @@ void	test_read(char *mode)
 		printf("%s\n", buff);
 
 		bzero(buff, 50);
-		rd = read(fake_fd, buff, 50);
+		rd = ft_read(fake_fd, buff, 50);
 		printf("%d\n", rd);
 		printf("errno=%d\n", errno);
 	}
@@ -153,6 +153,42 @@ void	test_strdup(char *mode)
 	}
 }
 
+void	test_errno_write(char *mode)
+{
+	int return_value;
+
+	if (strcmp(mode, "real") == 0)
+	{
+		return_value = write(-1, "hello\n", strlen("hello\n"));
+		printf("return_value=%d\n", return_value);
+		printf("errno=%d\n", errno);
+	}
+	else
+	{
+		return_value = ft_write(-1, "hello\n", strlen("hello\n"));
+		printf("return_value=%d\n", return_value);
+		printf("errno=%d\n", errno);
+	}
+}
+
+void	test_errno_read(char *mode)
+{
+	int return_value;
+
+	if (strcmp(mode, "real") == 0)
+	{
+		return_value = read(-1, "hello\n", strlen("hello\n"));
+		printf("return_value=%d\n", return_value);
+		printf("errno=%d\n", errno);
+	}
+	else
+	{
+		return_value = ft_read(-1, "hello\n", strlen("hello\n"));
+		printf("return_value=%d\n", return_value);
+		printf("errno=%d\n", errno);
+	}
+}
+
 int main(int ac, char **av)
 {
 	if (ac != 2)
@@ -174,6 +210,9 @@ int main(int ac, char **av)
 	test_write(av[1]);
 	test_read(av[1]);
 	test_strdup(av[1]);
+
+	test_errno_write(av[1]);
+	test_errno_read(av[1]);
 
 	return (0);
 }

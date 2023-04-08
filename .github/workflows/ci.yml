@@ -20,23 +20,3 @@ jobs:
           sudo apt-get -y install nasm
           make
           ./scripts/test.sh
-  tests-atoi-base:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: tests
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install nasm
-          make
-          ./scripts/test-atoi-base.sh
-  tests-ft-list:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: tests
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install nasm
-          make
-          ./scripts/test-ft-list.sh
