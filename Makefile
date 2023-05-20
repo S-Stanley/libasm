@@ -1,7 +1,5 @@
 SRCS = srcs/ft_strlen.asm srcs/ft_strcpy.asm srcs/ft_strcmp.asm srcs/ft_write.asm srcs/ft_read.asm srcs/ft_strdup.asm
-BONUS =
 OBJS = $(SRCS:.asm=.o)
-OBJSBONUS = $(BONUS:.asm=.o)
 NAME = libasm.a
 CC = nasm
 FLAGS = -felf64
@@ -15,12 +13,9 @@ $(NAME): $(OBJS)
 all:
 	$(NAME)
 clean:
-	$(RM) $(OBJS) $(OBJSBONUS)
+	$(RM) $(OBJS)
 fclean: clean
 		$(RM) $(NAME)
 re: fclean $(NAME)
 
-bonus:	$(OBJS) $(OBJSBONUS)
-		ar rc $(NAME) $(OBJS) $(OBJSBONUS)
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
