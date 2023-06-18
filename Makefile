@@ -1,11 +1,11 @@
-SRCS = srcs/ft_strlen.asm srcs/ft_strcpy.asm srcs/ft_strcmp.asm srcs/ft_write.asm srcs/ft_read.asm srcs/ft_strdup.asm
-OBJS = $(SRCS:.asm=.o)
+SRCS = srcs/ft_strlen.s srcs/ft_strcpy.s srcs/ft_strcmp.s srcs/ft_write.s srcs/ft_read.s srcs/ft_strdup.s
+OBJS = $(SRCS:.s=.o)
 NAME = libasm.a
 CC = nasm
 FLAGS = -felf64
 RM = rm -f
 
-%.o : %.asm
+%.o : %.s
 	$(CC) $(FLAGS) $< -o $@
 
 $(NAME): $(OBJS)
